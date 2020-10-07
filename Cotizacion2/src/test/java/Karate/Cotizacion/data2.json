@@ -1,0 +1,16 @@
+{
+  "lobCd": "CERO",
+  "productId": "UNO",
+  "subjectInsured": {
+    "description": "",
+    "vehicleQuotote": {
+    "brand": ,
+    "subBrand": ,
+    "model": 20,
+    "version": 1,
+    "condition": "1",
+    "mileage": 6000,
+    "invoiceValue": NUEVO
+    }
+  }
+}
