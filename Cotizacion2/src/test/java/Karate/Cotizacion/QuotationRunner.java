@@ -1,5 +1,6 @@
 package Karate.Cotizacion;
 
+import com.intuit.karate.KarateOptions;
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
 import java.io.File;
@@ -11,15 +12,19 @@ import net.masterthought.cucumber.ReportBuilder;
 import org.apache.commons.io.FileUtils;
 import static org.junit.Assert.*;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-
-public class QuotationRunner 
-{
+@KarateOptions(features = "classpath:Karate/Cotizacion/quotation.feature")
+public class QuotationRunner {
+	@BeforeClass
+	public static void beforeClass() throws Exception{
+		
+	}
 	@Test
     public void testParallel() {
       //Results results = Runner.path("classpath:demo").tags("~@ignore").parallel(5);
-        Results results = Runner.parallel(getClass(), 5);
+        Results results = Runner.parallel(getClass(), 1);
         generateReport(results.getReportDir());
         assertTrue(results.getErrorMessages(), results.getFailCount() == 0);        
     }
