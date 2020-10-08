@@ -24,7 +24,7 @@ public class QuotationRunner {
 	@Test
     public void testParallel() {
       //Results results = Runner.path("classpath:demo").tags("~@ignore").parallel(5);
-        Results results = Runner.parallel(getClass(), 5);
+        Results results = Runner.parallel(getClass(), 0);
         generateReport(results.getReportDir());
         assertTrue(results.getErrorMessages(), results.getFailCount() == 0);        
     }
