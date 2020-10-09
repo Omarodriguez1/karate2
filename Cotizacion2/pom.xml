@@ -36,8 +36,8 @@
 
 <dependency>
     <groupId>net.masterthought</groupId>
-    <artifactId>cucumber-reporting</artifactId>
-    <version>3.8.0</version>
+    <artifactId>maven-cucumber-reporting</artifactId>
+    <version>5.0.0</version>
 </dependency>
 
 <dependency>
@@ -73,11 +73,6 @@
           <version>3.8.0</version>
         </plugin>
           
-         <testResources>
-                <testResource>
-                    <directory>src/test/java</directory>
-                </testResource>
-            </testResources>
         
         
         <plugin>
