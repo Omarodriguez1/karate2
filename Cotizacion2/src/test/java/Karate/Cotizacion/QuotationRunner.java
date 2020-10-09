@@ -16,11 +16,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 @KarateOptions(features = "classpath:Karate/Cotizacion/quotation.feature")
+
 public class QuotationRunner {
+	
 	@BeforeClass
-	public static void beforeClass() throws Exception{
-		
-	}
+    public static void beforeClass() throws Exception {        
+        TestBase.beforeClass();
+    } 
+	
 	@Test
     public void testParallel() {
       //Results results = Runner.path("classpath:demo").tags("~@ignore").parallel(5);
