@@ -34,12 +34,23 @@ public class QuotationRunner {
         assertTrue(results.getErrorMessages(), results.getFailCount() == 0);        
     }
     
-    public static void generateReport(String karateOutputPath) {        
+   /* public static void generateReport(String karateOutputPath) {        
         Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[] {"json"}, true);
         List<String> jsonPaths = new ArrayList<String>(jsonFiles.size());
         jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
-        Configuration config = new Configuration(new File("target"), "QuotationRunner");
+        //Configuration config = new Configuration(new File("target"), "QuotationRunner");
+	    Configuration config = new Configuration(new File("target"), "Quotation");
         ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
         reportBuilder.generateReports();        
-    }
+    }*/
+	public static void generateReport(String karateOutputPath) {
+		Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[] { "json" }, true);
+		List<String> jsonPaths = new ArrayList<String>(jsonFiles.size());
+		for (File file : jsonFiles) {
+			jsonPaths.add(file.getAbsolutePath());
+		}
+		Configuration config = new Configuration(new File("target"), "employess");
+		ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
+		reportBuilder.generateReports();
+	}
 }
