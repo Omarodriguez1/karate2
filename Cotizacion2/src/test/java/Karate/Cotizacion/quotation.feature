@@ -1,15 +1,18 @@
 Feature: API Cotización
   
-  Background: 
-  	* url "http://18.144.161.96:8080/mx-par-quotation-service-0.0.1-SNAPSHOT"  
-
+  Background:    
+  
+  	#* url "http://18.144.161.96:8080/mx-par-quotation-service-0.0.1-SNAPSHOT"  
+     * url "http://54.153.65.109:9000/"
+       
   Scenario: Validar Code 200 
-    Given path "/api/v1/quotation"
+    #Given path "/api/v1/quotation"
+    Given path "/v1/quotation"
     * configure headers = {Content-Type: application/json, Authorization: "lala"}
     And request read("data.json")
     When method post
-    #Then status 200
-     And print response
+    Then status 200
+    And print response
     #response of validation(json)
     And match response == "#object"
     And match response == "#notnull"
@@ -22,7 +25,8 @@ Feature: API Cotización
     
  
   Scenario: Validar Code 400
-    Given path "/api/v1/quotation"
+    #Given path "/api/v1/quotation"
+    Given path "/v1/quotation"
     * configure headers = {Content-Type: application/json, Authorization: "lala"}
     And request read("data2.json")
     When method post
@@ -32,7 +36,8 @@ Feature: API Cotización
     
   @quotation
   Scenario: Validar Code 500
-    Given path "/api/v1/quotation"
+    #Given path "/api/v1/quotation"
+    Given path "/v1/quotation"
     * configure headers = {Content-Type: application/json, Authorization: "lala"}
     And request read("data1.json")
     When method post
@@ -45,7 +50,8 @@ Feature: API Cotización
     
    
   Scenario: Validar Response (Json)
-    Given path "/api/v1/quotation"
+    #Given path "/api/v1/quotation"
+    Given path "/v1/quotation"
     * configure headers = {Content-Type: application/json, Authorization: "lala"}
     And request read("data.json")
     When method post
@@ -56,7 +62,8 @@ Feature: API Cotización
 
    
     Scenario: Validar productId 
-    Given path "/api/v1/quotation"
+    #Given path "/api/v1/quotation"
+    Given path "/v1/quotation"
     * configure headers = {Content-Type: application/json, Authorization: "lala"}
     And request read("data.json")
     When method post
@@ -66,7 +73,8 @@ Feature: API Cotización
     
   
     Scenario: Validar primera sección plans 
-    Given path "/api/v1/quotation"
+    #Given path "/api/v1/quotation"
+    Given path "/v1/quotation"
     * configure headers = {Content-Type: application/json, Authorization: "lala"} 
     And request read("data.json")
     When method post 
@@ -82,7 +90,8 @@ Feature: API Cotización
     
     
     Scenario: Validar primera sección paymentFrequency 
-    Given path "/api/v1/quotation"
+    #Given path "/api/v1/quotation"
+    Given path "/v1/quotation"
     * configure headers = {Content-Type: application/json, Authorization: "lala"}
     And request read("data.json")
     When method post
@@ -90,7 +99,7 @@ Feature: API Cotización
     And match response.data.plans..paymentFrequency == "#notnull"
     #And match response.data.plans[0].paymentFrequency..frequency == [{"id":2,"value":"MENSUAL"}] 
     And match response.data.plans[0].paymentFrequency..frequency == [{"id": "#notnull" , "value": "#notnull"}]
-    And match response.data.plans[0].paymentFrequency..frequency == [{"id": "#number" , "value": "#string" , "value": "MENSUAL"}]
+    And match response.data.plans[0].paymentFrequency..frequency == [{"id": "#number" , "value": "#string" , "value": "TRIMESTRAL"}]
     #And match response.data.plans[0].paymentFrequency..premiumType == [{"id":1,"value":"MONTO"}] 
     And match response.data.plans[0].paymentFrequency..premiumType == [{"id": "#notnull" , "value": "#notnull"}]
     And match response.data.plans[0].paymentFrequency..premiumType == [{"id": "#number" , "value": "#string" , "value": "MONTO" }]
@@ -98,7 +107,8 @@ Feature: API Cotización
         
     
     Scenario: Validar sección coverageAssistance
-    Given path "/api/v1/quotation"
+    #Given path "/api/v1/quotation"
+    Given path "/v1/quotation"
     * configure headers = {Content-Type: application/json, Authorization: "lala"}
     And request read("data.json")
     When method post
@@ -119,7 +129,8 @@ Feature: API Cotización
     
  
     Scenario: Validar sección collection
-    Given path "/api/v1/quotation"
+    #Given path "/api/v1/quotation"
+    Given path "/v1/quotation"
     * configure headers = {Content-Type: application/json, Authorization: "lala"}
     And request read("data.json")
     When method post
@@ -137,7 +148,8 @@ Feature: API Cotización
     
   
     Scenario: Validar sección notifications
-    Given path "/api/v1/quotation"
+    #Given path "/api/v1/quotation"
+    Given path "/v1/quotation"
     * configure headers = {Content-Type: application/json, Authorization: "lala"}
     And request read("data.json")
     When method post
@@ -146,15 +158,16 @@ Feature: API Cotización
     And match response.notifications..message contains "#string" , "#present" , "#notnull"
     And match response.notifications..timestamp contains "#string" , "#present" , "#notnull"
     
-    
+     
     
     Scenario: Validar sección Total
-    Given path "/api/v1/quotation"
+    #Given path "/api/v1/quotation"
+    Given path "/v1/quotation"
     * configure headers = {Content-Type: application/json, Authorization: "lala"}
     And request read("data.json")
     When method post
     Then status 200
     And match response..total contains "#number" , "#present" , "#notnull"
-    And match response..total == [3] 
+    And match response..total == [6] 
     And print response 
- 				
+ 		
